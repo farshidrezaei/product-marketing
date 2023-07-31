@@ -20,3 +20,4 @@ yarn-error.log
 /docker/db/db/
 /docker/nginx/logs/
 /docker/redis/data/
+/docker/minio/data/
