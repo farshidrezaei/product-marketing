@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa322c53454393ed775cfe4807d54a50",
+    "content-hash": "f8fc7359ff9bec7af55f35c9259aa8b7",
     "packages": [
         {
             "name": "brick/math",
@@ -431,6 +431,58 @@
                 }
             ],
             "time": "2023-01-14T14:17:03+00:00"
+        },
+        {
+            "name": "farshidrezaei/vandar-responder",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/farshidrezaei/vandar-responder.git",
+                "reference": "bade3e8eac78c23891c6bb5b2ac4399793188151"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/farshidrezaei/vandar-responder/zipball/bade3e8eac78c23891c6bb5b2ac4399793188151",
+                "reference": "bade3e8eac78c23891c6bb5b2ac4399793188151",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "FarshidRezaei\\VandarResponder\\Providers\\ResponderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Helpers/helpers.php"
+                ],
+                "psr-4": {
+                    "FarshidRezaei\\VandarResponder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Farshid Rezaei",
+                    "email": "farshid.net1@yahoo.com",
+                    "homepage": "https://farshidrezaei.ir",
+                    "role": "Full-Stack Web Developer"
+                }
+            ],
+            "description": "Vandar Responder Laravel Packagee",
+            "support": {
+                "issues": "https://github.com/farshidrezaei/vandar-responder/issues",
+                "source": "https://github.com/farshidrezaei/vandar-responder/tree/2.0.1"
+            },
+            "time": "2022-12-18T07:45:44+00:00"
         },
         {
             "name": "fruitcake/php-cors",
