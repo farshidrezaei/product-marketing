@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\API\V1\Auth\LoginAction;
 use App\Http\Controllers\API\V1\Auth\RegisterAction;
+use App\Http\Controllers\API\V1\ProductController;
+use App\Http\Controllers\API\V1\ProductLinkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware('guest')->prefix('auth')->name('auth.')->group(function () {
-    Route::post('register', RegisterAction::class)->name('register');
-    Route::post('login', LoginAction::class)->name('login');
+Route::name('api.')->group(function () {
+    Route::middleware('guest')->prefix('auth')->name('auth.')->group(function () {
+        Route::post('register', RegisterAction::class)->name('register');
+        Route::post('login', LoginAction::class)->name('login');
+    });
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::apiResource('products', ProductController::class);
+        Route::apiResource('products.links', ProductLinkController::class);
+    });
 });

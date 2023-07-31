@@ -56,6 +56,21 @@ return [
             'throw' => false,
         ],
 
+        'minio' => [
+            'driver' => 's3',
+            'endpoint' => env('MINIO_ENDPOINT'),
+            // Required for minio to work with AWS SDK
+            'use_path_style_endpoint' => true,
+            'key' => env('MINIO_ROOT_USER'),
+            'secret' => env('MINIO_ROOT_PASSWORD'),
+
+            // This value must be set on minio server configuration
+            'region' => env('MINIO_REGION', 'test_east'),
+            'bucket' => env('MINIO_BUCKET'),
+
+            'public_url'=>env('MINIO_PUBLIC_URL'),
+        ],
+
     ],
 
     /*
