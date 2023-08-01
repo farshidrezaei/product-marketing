@@ -36,6 +36,7 @@ return [
         'GET_TOKEN_ERROR' => 'get_token_error',
         'PAYMENT_VERIFY_FORBIDDEN_ERROR' => 'payment_verify_forbidden_error',
         'PAYMENT_FORBIDDEN_ERROR' => 'payment_forbidden_error',
+        'EXTERNAL_SERVICE_ERROR'=>'internal_error'
     ],
     'customExceptions' => [
         RuntimeException::class => CustomDefaultException::class,

@@ -3,7 +3,10 @@
 namespace App\Repositories;
 
 use App\Contracts\ProductRepositoryContract;
+use App\Http\Filters\ProductVisitFilter;
+use App\Http\Requests\PaginatedProductVisitCountRequest;
 use App\Models\Product;
+use App\Models\ProductLinkVisit;
 use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -123,4 +126,27 @@ class ProductRepository  implements ProductRepositoryContract
         return "$path/$name";
     }
 
+    public function countVisits(int|string $productId, ProductVisitFilter $filter): int
+    {
+        return ProductLinkVisit::filter($filter)
+            ->whereRelation('link.product', 'id', '=', $productId)
+            ->count();
+    }
+
+
+    public function indexWithVisitsCount(
+        PaginatedProductVisitCountRequest $request,
+        ProductVisitFilter $filter,
+        ?int $page = 1,
+        ?int $perPage = 15
+    ): LengthAwarePaginator {
+        $data = $this->model
+            ->query()
+            ->paginate(perPage: $perPage, page: $page);
+        $data->through(function (Product $item) use ($request, $filter) {
+            $item->visits_count = \App\Facades\Product::countVisitsCached($item->id, $filter, $request);
+            return $item;
+        });
+        return $data;
+    }
 }
