@@ -24,7 +24,7 @@ RUN groupadd -g $GID $GROUP \
     && groupmod -g $GID $USER
 
 # Install composer.
-RUN php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 ########## Supervisor ##########
 RUN  mkdir -p /var/log/supervisor && mkdir -p /etc/supervisor/conf.d
